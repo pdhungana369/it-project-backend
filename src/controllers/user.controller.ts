@@ -113,7 +113,6 @@ export const userLogin = async (req: Request, res: Response) => {
 			},
 		});
 	} catch (error) {
-		console.log(error);
 		res.status(400).json({ status: "failure", error: `something went wrong` });
 	}
 };
@@ -195,7 +194,6 @@ export const getMe = async (req: Request, res: Response) => {
 		//     Review: true,
 		//   },
 		// });
-		// console.log("booking list", bookings);
 		//
 		const usersData = {
 			...user,
