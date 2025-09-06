@@ -8,6 +8,7 @@ import {
 	getAllProductByUser,
 	getProductByUser,
 	getProductById,
+	productStockStatus,
 } from "../controllers/product.controller";
 import adminMiddleware from "../middlewares/authorize-role";
 import authenticateToken from "../middlewares/authenticate-token";
@@ -22,5 +23,6 @@ productRoutes.delete("/product/:id", authenticateToken, deleteProduct);
 productRoutes.get("/product/:id", adminMiddleware, getProductByUser);
 productRoutes.patch("/product/:id", authenticateToken, updateProduct);
 productRoutes.get("/product-with-category", getCategoryWithProductParams);
+productRoutes.get("/product-stock-status", productStockStatus);
 
 export default productRoutes;

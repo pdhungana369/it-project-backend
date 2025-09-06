@@ -76,27 +76,18 @@ model CartItem {
 }
 
 model Order {
-  id          String      @id @default(uuid()) @db.Uuid
-  createdAt   DateTime    @default(now())
-  updatedAt   DateTime    @updatedAt
-  status      OrderStatus @default(PENDING)
-  userId      String      @db.Uuid
-  paymentId   String      @unique @db.Uuid
-  orderId     String?
-  totalAmount String?
-  payment     Payment     @relation("OrderToPayment", fields: [paymentId], references: [id])
-  User        User        @relation(fields: [userId], references: [id])
-  OrderItem   OrderItem[]
-}
-
-model Payment {
-  id          String   @id @default(uuid()) @db.Uuid
-  status      Boolean
-  initiatorId String?
-  amount      Int
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-  order       Order?   @relation("OrderToPayment")
+  id                   String      @id @default(uuid()) @db.Uuid
+  createdAt            DateTime    @default(now())
+  updatedAt            DateTime    @updatedAt
+  status               OrderStatus @default(PENDING)
+  userId               String      @db.Uuid
+  orderId              String?
+  totalAmount          String?
+  User                 User        @relation(fields: [userId], references: [id])
+  OrderItem            OrderItem[]
+  recipientAddress     String?
+  recipientName        String?
+  recipientPhoneNumber String?
 }
 
 model OrderItem {

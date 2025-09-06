@@ -11,7 +11,7 @@ export const createProduct = async (req: Request, res: Response) => {
 		outOfStock,
 		imageUrl,
 		isFreeDelivery,
-		stockCount
+		stockCount,
 	} = req?.body;
 
 	if (!name || !categoryId || !price) {
@@ -75,7 +75,7 @@ export const createProduct = async (req: Request, res: Response) => {
 				outOfStock: outOfStock || false,
 				imageUrl,
 				isFreeDelivery: isFreeDelivery || false,
-				stockCount
+				stockCount,
 			},
 		});
 
@@ -267,7 +267,7 @@ export const updateProduct = async (req: Request, res: Response) => {
 		outOfStock,
 		imageUrl,
 		isFreeDelivery,
-		stockCount
+		stockCount,
 	} = req.body;
 
 	const token = req.headers["authorization"];
@@ -471,3 +471,16 @@ export const getCategoryWithProductParams = async (
 		res.status(500).json({ message: "Internal Server Error" });
 	}
 };
+export async function productStockStatus(req: Request, res: Response) {
+	try {
+		const product = await prismaClient.product.findMany({
+			where: {
+				outOfStock: true,
+			},
+			select: { id: true, name: true, stockCount: true, outOfStock: true },
+		});
+		return res.status(200).json({ status: "success", data: product });
+	} catch (error) {
+		console.log("error", error);
+	}
+}

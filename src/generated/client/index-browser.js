@@ -181,18 +181,11 @@ exports.Prisma.OrderScalarFieldEnum = {
   updatedAt: 'updatedAt',
   status: 'status',
   userId: 'userId',
-  paymentId: 'paymentId',
   orderId: 'orderId',
-  totalAmount: 'totalAmount'
-};
-
-exports.Prisma.PaymentScalarFieldEnum = {
-  id: 'id',
-  status: 'status',
-  initiatorId: 'initiatorId',
-  amount: 'amount',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  totalAmount: 'totalAmount',
+  recipientAddress: 'recipientAddress',
+  recipientName: 'recipientName',
+  recipientPhoneNumber: 'recipientPhoneNumber'
 };
 
 exports.Prisma.OrderItemScalarFieldEnum = {
@@ -237,7 +230,6 @@ exports.Prisma.ModelName = {
   Cart: 'Cart',
   CartItem: 'CartItem',
   Order: 'Order',
-  Payment: 'Payment',
   OrderItem: 'OrderItem'
 };
 

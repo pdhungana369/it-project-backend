@@ -6,10 +6,10 @@ import { getAnalytics } from "../controllers/analytics.controller";
 const userRoute = Router();
 
 userRoute.get(
-  "/admin/analytics",
-  authenticateToken,
-  adminMiddleware,
-  getAnalytics,
+	"/admin/analytics",
+	authenticateToken,
+	adminMiddleware,
+	getAnalytics
 );
 
 export default userRoute;
